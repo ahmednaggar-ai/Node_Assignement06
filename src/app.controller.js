@@ -2,6 +2,7 @@ import express from 'express';
 import { connection } from './database/connection.js';
 import suppliersRouter from './modules/suppliers/suppliers.route.js';
 import productsRouter from './modules/products/products.route.js';
+import salesRouter from './modules/sales/sales.route.js';
 
 export const bootstrap = ()=>{
 
@@ -10,6 +11,7 @@ export const bootstrap = ()=>{
 
     app.use('/api', suppliersRouter);
     app.use('/api', productsRouter);
+    app.use('/api', salesRouter);
     app.get('/', (req, res)=>{
         connection.query('SELECT 1 + 1 as result', (err, result)=>{
             if(err){
